@@ -9,11 +9,16 @@ connectDB();  //database connection
 app.use(cors());
 app.use(express.json());
 
+const insightRoute = require('./routes/insights');
+
+app.use('/api/insights', insightRoute);
+
 app.get('/', (req,res)=>{
     res.send("Backend running...")
 })
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3
+console.log(PORT)
 
 app.listen(PORT, ()=>{
     console.log(`App listening on PORT:${PORT}`)
